@@ -1,4 +1,4 @@
-public class Servidor implements Runnable {
+public class Servidor{
 
     private BancoDeMensagens bmInterno;
 
@@ -7,19 +7,13 @@ public class Servidor implements Runnable {
     }
 
     void loopServidor () {   
-        while(true) {
-            if(bmInterno.listaMensagens.isEmpty() != true) {
-                for(Mensagem msg: bmInterno.listaMensagens) {
-                    System.out.println("Enviando mensagem de: "+msg.nomeRemetente+" para: "+msg.nomeDestinatario);
-                    bmInterno.listaMensagens.remove(msg); 
-                }
-            }
-        }
-    }
 
-    @Override
-    public void run() {
-        loopServidor();
+        while(true) {
+            for(Mensagem msg: bmInterno.listaMensagens) {
+                System.out.println("Enviando mensagem de: "+msg.nomeRemetente+" para: "+msg.nomeDestinatario);
+                bmInterno.listaMensagens.remove(msg);
+            }                
+        }
     }
         
 }

@@ -1,14 +1,13 @@
 public class Mensagem {
 
     protected String nomeRemetente;
-    protected int idRemetente;
     protected String nomeDestinatario;
-    protected int idDestinatario;   
+    protected String textoMensagem;
+ 
     
-    Mensagem(String nomeRemetente, int idRemetente, String nomeDestinatario, int idDestinatario) {
+    Mensagem(String nomeRemetente, String nomeDestinatario, String texto) {
         this.nomeRemetente = nomeRemetente;
-        this.idRemetente = idRemetente;
-        this.idDestinatario = idDestinatario;
         this.nomeDestinatario = nomeDestinatario;
+        this.textoMensagem = texto;
     }
 }

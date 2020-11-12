@@ -1,26 +1,20 @@
 import java.util.Scanner;
 
-public class Cliente implements Runnable{
-    private int id;
+public class Cliente {
     private String nome;
     private BancoDeMensagens bmInterno;
     
-    Cliente(int id, String nome, BancoDeMensagens bm){
-        this.id = id;
+    Cliente(String nome, BancoDeMensagens bm){
         this.nome = nome;
         this.bmInterno = bm;
-    }
-
-    public int getId() {
-        return id;
     }
 
     public String getNome() {
         return nome;
     }
 
-    public void EviaMensagem(String nomeDestinatario, int idDestinatario ){
-        Mensagem msg = new Mensagem(nome, id, nomeDestinatario, idDestinatario);
+    public void EviaMensagem(String nomeDestinatario){
+        Mensagem msg = new Mensagem(nome, nomeDestinatario, "Alguma Mensagem!!!");
         this.bmInterno.addMensagem(msg);     
         System.out.println("Enviando para servidor...");                    
     }
@@ -29,7 +23,6 @@ public class Cliente implements Runnable{
         Scanner input = new Scanner(System.in);      
 
         String nomeDestinatario;
-        int idDestinatario; 
         Boolean sair = false;
 
         while(sair != true) {
@@ -37,24 +30,15 @@ public class Cliente implements Runnable{
             System.out.print("Nome do destinatário: ");
             nomeDestinatario = input.next();
 
-            System.out.print("Id do destinatário: ");
-            idDestinatario = input.nextInt();
-
-            EviaMensagem(nomeDestinatario, idDestinatario);
+            EviaMensagem(nomeDestinatario);
 
             System.out.print("Sair?[y/n]: ");
-            String opcao = input.next();
-            
+            String opcao = input.next();            
 
             if(opcao.equals("y")) {
                 sair = true;
                 input.close();                
             }
         }
-    }
-
-    @Override
-    public void run() {
-        clienteRun();
     }
 }
