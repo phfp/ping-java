@@ -1,5 +1,7 @@
 import java.util.Scanner;
 
+import javax.swing.Timer;
+
 public class Cliente {
     private String nome;
     private BancoDeMensagens bmInterno;
@@ -16,17 +18,19 @@ public class Cliente {
     public void EviaMensagem(String nomeDestinatario, String mensagem){
         Mensagem msg = new Mensagem(nome, nomeDestinatario, mensagem);
         this.bmInterno.addMensagem(msg);     
-        System.out.println("Enviando para servidor...");                    
+        System.out.println("Enviando mensagem para o servidor...");                    
     }
 
-    public void clienteRun() {
-        Scanner input = new Scanner(System.in);      
+    public void clienteRun() {   
+        
+        Scanner input = new Scanner(System.in);
+        Timer timer = new Timer(1000, null);
 
         String nomeDestinatario;
         String mensagem;
         Boolean sair = false;
 
-        while(sair != true) {
+        while(sair != true) {             
 
             System.out.print("\nNome do destinatário: ");
             nomeDestinatario = input.next();
@@ -36,13 +40,14 @@ public class Cliente {
 
             EviaMensagem(nomeDestinatario, mensagem);
 
+            timer.start();
             System.out.print("Sair?[y/n]: ");
             String opcao = input.next();            
 
             if(opcao.equals("y")) {
-                sair = true;
-                input.close();                
-            }
+                sair = true;   
+                input.close();
+            }          
         }
     }
 }
