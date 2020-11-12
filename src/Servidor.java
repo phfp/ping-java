@@ -10,10 +10,9 @@ public class Servidor {
 
         while(true) {
 
-                for(Mensagem msg: bmInterno.listaMensagens) {
-                    System.out.println("\nA mensagem de "+msg.nomeRemetente+" para "+msg.nomeDestinatario+" foi eviada.\nMengem: "+msg.textoMensagem+"\n");
-                    bmInterno.listaMensagens.remove(msg);
-
+            for(Mensagem msg: bmInterno.listaMensagens) {
+                System.out.println("\nA mensagem de "+msg.nomeRemetente+" para "+msg.nomeDestinatario+" foi eviada.\nMengem: "+msg.textoMensagem+"\n");
+                bmInterno.listaMensagens.remove(msg);
             }               
         }
     }
