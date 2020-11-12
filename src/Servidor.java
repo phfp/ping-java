@@ -1,4 +1,4 @@
-public class Servidor{
+public class Servidor {
 
     private BancoDeMensagens bmInterno;
 
@@ -9,10 +9,12 @@ public class Servidor{
     void loopServidor () {   
 
         while(true) {
-            for(Mensagem msg: bmInterno.listaMensagens) {
-                System.out.println("Enviando mensagem de: "+msg.nomeRemetente+" para: "+msg.nomeDestinatario);
-                bmInterno.listaMensagens.remove(msg);
-            }                
+            if(bmInterno.listaMensagens.isEmpty() != true) {
+                for(Mensagem msg: bmInterno.listaMensagens) {
+                    System.out.println("\nA mensagem de "+msg.nomeRemetente+" para "+msg.nomeDestinatario+" foi eviada.\nMengem:"+msg.textoMensagem+"\n");
+                    bmInterno.listaMensagens.remove(msg);
+                }
+            }               
         }
     }
         

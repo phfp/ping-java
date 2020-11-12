@@ -3,27 +3,26 @@ import java.util.concurrent.Executors;
 
 public class ServidorCliente implements Runnable {
 
-    private int opcaoRun;
-
-    ServidorCliente(int opcao) {
-        this.opcaoRun = opcao;    
-    }
-
     BancoDeMensagens bancoDeMensagens = new BancoDeMensagens();
     Servidor servidor = new Servidor(bancoDeMensagens);
-    Cliente cliente = new Cliente("Paulo",bancoDeMensagens);
+    Cliente cliente = new Cliente("Paulo",bancoDeMensagens); 
+
+    public void startCliente() {
+        cliente.clienteRun();
+    }
 
     @Override
     public void run() {
-        if(opcaoRun == 0)
-            cliente.clienteRun();
-        else
-            servidor.loopServidor();   
+        servidor.loopServidor();      
     }
 
-    public static void main(String[] args) throws Exception {               
+    public static void main(String[] args) throws Exception {
+
+        ServidorCliente servidorCliente = new ServidorCliente();
+
         ExecutorService pool = Executors.newFixedThreadPool(2);        
-        pool.execute(new ServidorCliente(1));
-        pool.execute(new ServidorCliente(0));
+        pool.execute(servidorCliente);
+
+        servidorCliente.startCliente();
     }    
 }

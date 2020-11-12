@@ -1,9 +1,9 @@
-import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.CopyOnWriteArrayList;
 
 public class BancoDeMensagens {
 
-   public List<Mensagem> listaMensagens = new ArrayList<>();
+   public List<Mensagem> listaMensagens = new CopyOnWriteArrayList<>();
 
     protected void addMensagem(Mensagem m) {
         listaMensagens.add(m);
