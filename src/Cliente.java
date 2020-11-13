@@ -23,31 +23,35 @@ public class Cliente {
 
     public void clienteRun() {   
         
-        Scanner input = new Scanner(System.in);
         Timer timer = new Timer(1000, null);
 
         String nomeDestinatario;
         String mensagem;
         Boolean sair = false;
 
-        while(sair != true) {             
+        Scanner input = new Scanner(System.in);
+
+        while(sair != true) {
+            
+            
 
             System.out.print("\nNome do destinatário: ");
-            nomeDestinatario = input.next();
+            nomeDestinatario = input.nextLine();
 
             System.out.print("Mensagem: ");
-            mensagem = input.next();
+            mensagem = input.nextLine();
 
             EviaMensagem(nomeDestinatario, mensagem);
 
             timer.start();
             System.out.print("Sair?[y/n]: ");
-            String opcao = input.next();            
+            String opcao = input.nextLine();            
 
             if(opcao.equals("y")) {
                 sair = true;   
                 input.close();
-            }          
+            }
+                  
         }
     }
 }
