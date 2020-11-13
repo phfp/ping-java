@@ -2,8 +2,7 @@ public class Mensagem {
 
     protected String nomeRemetente;
     protected String nomeDestinatario;
-    protected String textoMensagem;
- 
+    protected String textoMensagem; 
     
     Mensagem(String nomeRemetente, String nomeDestinatario, String texto) {
         this.nomeRemetente = nomeRemetente;

@@ -31,9 +31,7 @@ public class Cliente {
 
         Scanner input = new Scanner(System.in);
 
-        while(sair != true) {
-            
-            
+        while(sair != true) {          
 
             System.out.print("\nNome do destinatário: ");
             nomeDestinatario = input.nextLine();
@@ -50,8 +48,7 @@ public class Cliente {
             if(opcao.equals("y")) {
                 sair = true;   
                 input.close();
-            }
-                  
+            }                  
         }
     }
 }
