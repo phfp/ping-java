@@ -20,7 +20,7 @@ public class ServidorCliente implements Runnable {
 
         ServidorCliente servidorCliente = new ServidorCliente();
 
-        ExecutorService pool = Executors.newFixedThreadPool(2);        
+        ExecutorService pool = Executors.newFixedThreadPool(1);        
         pool.execute(servidorCliente);
 
         servidorCliente.startCliente();
